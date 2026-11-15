@@ -56,6 +56,13 @@ Integração com a loja oficial da FURIA, mostrando:
    TELEGRAM_TOKEN=seu_token_aqui
    ```
 
+   Opcional, para o chat com LLM (padrões abaixo; requer o [Ollama](https://ollama.com) rodando com o modelo baixado):
+   ```
+   OLLAMA_URL=http://localhost:11434
+   OLLAMA_MODEL=qwen3:8b
+   ```
+   Qualquer mensagem de texto fora dos botões é respondida pela LLM.
+
 2. Instale as dependências:
    ```bash
    pip install python-telegram-bot deep-translator python-dotenv

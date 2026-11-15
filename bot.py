@@ -1,4 +1,5 @@
-from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, MessageHandler, filters
+from handlers.chat import chat_handler
 from handlers.start import start_handler, language_handler, menu_handler
 from handlers.quiz import start_quiz, handle_answer
 from handlers.curiosities import curiosities_handler
@@ -17,6 +18,7 @@ app.add_handler(CallbackQueryHandler(start_quiz, pattern='^start_quiz$'))
 app.add_handler(CallbackQueryHandler(handle_answer, pattern='^quiz_answer_'))
 app.add_handler(CallbackQueryHandler(curiosities_handler, pattern='^(curiosities|next_curiosity|back_to_menu)$'))
 app.add_handler(CallbackQueryHandler(store_handler, pattern='^store$'))
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, chat_handler))
 
 if __name__ == '__main__':
     print("Bot rodando!")
